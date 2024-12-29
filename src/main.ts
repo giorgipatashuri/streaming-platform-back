@@ -32,7 +32,7 @@ async function bootstrap() {
       saveUninitialized: false,
       cookie: {
         domain: config.getOrThrow<string>('SESSION_DOMAIN'),
-        maxAge: config.getOrThrow<number>('SESSION_MAX_VALUE'),
+        maxAge: 6000,
         httpOnly: config.getOrThrow<boolean>('SESSION_HTTP_ONLY'),
         secure: config.getOrThrow<boolean>('SESSION_SECURE'),
         sameSite: 'lax',
