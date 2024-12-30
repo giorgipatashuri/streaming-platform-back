@@ -6,7 +6,11 @@ export function getGraphQLConfig(
   configService: ConfigService,
 ): ApolloDriverConfig {
   return {
-    playground: true,
+    playground: {
+      settings: {
+        'request.credentials': 'include', // This enables sending cookies
+      },
+    },
     path: configService.getOrThrow<string>('GRAPHQL_PREFIX'),
     autoSchemaFile: join(process.cwd(), 'src/core/graphql/schema.gql'),
     sortSchema: true,
