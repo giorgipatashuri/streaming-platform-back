@@ -8,6 +8,8 @@ import { CreateUserInput } from './input/create-user.input';
 import { hash } from 'argon2';
 
 import { ConfigService } from '@nestjs/config';
+import { ChangeEmailInput } from './input/change-email.input';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class AccountService {
@@ -40,5 +42,19 @@ export class AccountService {
       },
     });
     return user;
+  }
+  public async changeEmail(user: User, input: ChangeEmailInput) {
+    const { email } = input;
+
+    await this.prisma.user.update({
+      where: {
+        id: user.id,
+      },
+      data: {
+        email,
+      },
+    });
+
+    return true;
   }
 }
