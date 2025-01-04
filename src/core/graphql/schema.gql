@@ -2,6 +2,10 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input ChangeEmailInput {
+  email: String!
+}
+
 input CreateUserInput {
   email: String!
   password: String!
@@ -21,6 +25,7 @@ input LoginInput {
 type Mutation {
   Login(data: LoginInput!): UserModel!
   Logout: String!
+  changeEmail(data: ChangeEmailInput!): Boolean!
   createUser(data: CreateUserInput!): UserModel!
 }
 
